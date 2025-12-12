@@ -1,59 +1,76 @@
-# Barbershop Manager
+# 📘 Barbershop Manager
 
-Sistema de gerenciamento para barbearias - Agendamentos, controle de barbeiros e serviços
-
-**Status:** Em desenvolvimento inicial
+Sistema de gerenciamento para barbearias — agendamentos, controle de barbeiros e serviços.
 
 ---
 
-## Sobre o Projeto
+## 📌 Visão Geral / Contexto
 
-O **Barbershop Manager** é uma aplicação full-stack para otimizar o gerenciamento de barbearias, oferecendo funcionalidades de agendamento online, controle de barbeiros e gestão de serviços.
+O **Barbershop Manager** é uma aplicação full-stack criada com dois objetivos principais:
 
-Este projeto está sendo desenvolvido com foco em **práticas profissionais de engenharia de software**, incluindo:
-- Arquitetura limpa e escalável
-- Padrões de commits e branches (GitHub Flow)
-- Testes automatizados
-- Desenvolvimento incremental
+1. **Prático**: oferecer funcionalidades de gerenciamento para barbearias, como agendamento online, controle de barbeiros e gestão de serviços.  
+2. **Educacional**: servir como exercício de construção de um projeto do zero, aplicando boas práticas de engenharia de software em todas as etapas — desde a organização de branches e commits até a documentação e testes automatizados.
+
+Problema: barbearias têm dificuldade em organizar agendamentos e controlar serviços.  
+Propósito adicional: praticar e consolidar padrões profissionais de desenvolvimento de software.  
+Público-alvo: donos de barbearias e desenvolvedores que desejam aprender ou revisar boas práticas.  
+Cenário: aplicação desenvolvida de forma incremental, seguindo GitHub Flow e princípios de arquitetura limpa.
 
 ---
 
-## Stack Tecnológica
+## 📊 Status do Projeto
+
+🚧 Em desenvolvimento inicial 
+
+---
+
+## 🚀 Tecnologias Utilizadas
 
 ### Backend
-- Python
-- Django / Django REST Framework
-- PostgreSQL 
-- JWT para autenticação
-
-### Frontend
-- Vue.js
-- Vite
-- Pinia (gerenciamento de estado)
-- Axios (cliente HTTP)
-
-### Infraestrutura
-- Docker + Docker Compose
-- Git + GitHub (GitHub Flow)
+- Python 3.x
+- Django 6.0
+- Django REST Framework 3.16.1
+- PostgreSQL (via psycopg2-binary)
 
 ---
 
-## Roadmap
+## 🛠️ Funcionalidades
 
-### Fase 1: Core (MVP)
-Implementação das funcionalidades essenciais: autenticação, gestão de serviços e barbeiros, sistema de agendamentos básico.
+- [x] Endpoint de health-check (`GET /api/health/`)
 
-### Fase 2: Notificações e Performance (pode mudar no decorrer do desenvolvimento)
-Adicionar sistema de notificações assíncronas e otimizações de performance.
-
-### Fase 3: Recursos Avançados (pode mudar no decorrer do desenvolvimento)
-Funcionalidades como fila de espera em tempo real, analytics e integrações externas.
 
 ---
 
-## Como Executar
+## 📦 Instalação / Como Executar
 
-Instruções de instalação e execução serão adicionadas após a configuração do ambiente Docker.
+```
+# Clone o repositório
+git clone https://github.com/pablosscosta/barbershop-manager.git
+
+# Acesse a pasta do backend
+cd barbershop-manager/backend
+
+# Ative o ambiente virtual
+source venv/bin/activate   # Linux/Mac
+venv\Scripts\activate      # Windows
+
+# Instale as dependências
+pip install -r requirements.txt
+
+# Inicie o servidor
+python manage.py runserver
+
+```
+
+---
+
+## ⏭️ Próximas Etapas
+
+- [ ] Implementar autenticação com JWT  
+- [ ] Criar CRUD de barbeiros e serviços  
+- [ ] Desenvolver sistema de agendamento básico  
+- [ ] Configurar ambiente Docker  
+- [ ] Adicionar testes automatizados
 
 ---
 
@@ -83,12 +100,6 @@ feat(auth): adiciona endpoint de login
 fix(booking): corrige validação de horário
 docs(readme): atualiza instruções de setup
 ```
-
----
-
-## Documentação
-
-A documentação será expandida conforme o projeto evolui.
 
 ---
 

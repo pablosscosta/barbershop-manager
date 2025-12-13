@@ -37,7 +37,10 @@ Cenário: aplicação desenvolvida de forma incremental, seguindo GitHub Flow e 
 ## 🛠️ Funcionalidades
 
 - [x] Endpoint de health-check (`GET /api/health/`)
-
+- [x] Autenticação JWT:
+  - `POST /api/token/` → login (gera access e refresh token)
+  - `POST /api/token/refresh/` → gera novo access token
+- [x] Endpoint protegido de teste (`GET /api/dashboard/`) → acessível apenas com token válido
 
 ---
 
@@ -57,6 +60,12 @@ venv\Scripts\activate      # Windows
 # Instale as dependências
 pip install -r requirements.txt
 
+# Realize as migrações
+python manage.py migrate
+
+# Crie um usuário para testar autenticação
+python manage.py createsuperuser
+
 # Inicie o servidor
 python manage.py runserver
 
@@ -64,13 +73,40 @@ python manage.py runserver
 
 ---
 
+---
+
+## 🔑 Fluxo de Teste da Autenticação
+
+Após criar o superusuário, você pode validar o funcionamento da autenticação JWT. Use ferramentas como Postman ou curl para realizar as requisições:
+
+1. **Obter tokens**
+   - Faça uma requisição `POST` para `/api/token/` com `username` e `password`.
+   - Você receberá um par de tokens: `access` e `refresh`.
+
+2. **Usar rota protegida**
+   - Faça uma requisição `GET` para `/api/dashboard/` sem token → resposta `401 Unauthorized`.
+   - Faça a mesma requisição com o header `Authorization: Bearer <access_token>` → acesso autorizado.
+
+3. **Renovar token**
+   - Quando o `access token` expirar, envie o `refresh token` para `/api/token/refresh/`.
+   - Você receberá um novo `access token`.
+
+Esse fluxo garante que a autenticação JWT está configurada corretamente.
+
+
+---
+
 ## ⏭️ Próximas Etapas
 
-- [ ] Implementar autenticação com JWT  
-- [ ] Criar CRUD de barbeiros e serviços  
-- [ ] Desenvolver sistema de agendamento básico  
-- [ ] Configurar ambiente Docker  
-- [ ] Adicionar testes automatizados
+- [x] Configuração inicial do JWT (checkpoint 1)
+- [x] Endpoints de login e refresh (checkpoint 2)
+- [ ] Registro de usuários via API (checkpoint 3)
+- [ ] Proteção de rotas reais (checkpoint 4)
+- [ ] Testes automatizados de autenticação (checkpoint 5)
+- [ ] Criar CRUD de barbeiros e serviços
+- [ ] Desenvolver sistema de agendamento básico
+- [ ] Configurar ambiente Docker
+
 
 ---
 

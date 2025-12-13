@@ -8,7 +8,7 @@ Sistema de gerenciamento para barbearias — agendamentos, controle de barbeiros
 
 O **Barbershop Manager** é uma aplicação full-stack criada com dois objetivos principais:
 
-1. **Prático**: oferecer funcionalidades de gerenciamento para barbearias, como agendamento online, controle de barbeiros e gestão de serviços.  
+1. **Prático**: oferecer gerenciamento interno de barbearias. Permite ao administrador cadastrar barbeiros, serviços, clientes e controlar agendamentos, com autenticação JWT para proteger as rotas.  
 2. **Educacional**: servir como exercício de construção de um projeto do zero, aplicando boas práticas de engenharia de software em todas as etapas — desde a organização de branches e commits até a documentação e testes automatizados.
 
 Problema: barbearias têm dificuldade em organizar agendamentos e controlar serviços.  
@@ -37,6 +37,14 @@ Cenário: aplicação desenvolvida de forma incremental, seguindo GitHub Flow e 
 ## 🛠️ Funcionalidades
 
 - [x] Endpoint de health-check (`GET /api/health/`)
+- [x] Autenticação JWT:
+  - `POST /api/token/` → login (gera access e refresh token)
+  - `POST /api/token/refresh/` → gera novo access token
+- [x] Registro de usuários via API (`POST /api/register/`)
+- [x] CRUD protegido de barbeiros (`/api/barbers/`)
+- [x] CRUD protegido de serviços (`/api/services/`)
+- [x] CRUD protegido de clientes (`/api/customers/`)
+- [x] CRUD protegido de agendamentos (`/api/appointments/`)
 
 
 ---
@@ -57,20 +65,25 @@ venv\Scripts\activate      # Windows
 # Instale as dependências
 pip install -r requirements.txt
 
+# Realize as migrações
+python manage.py migrate
+
 # Inicie o servidor
 python manage.py runserver
 
 ```
 
+
 ---
 
 ## ⏭️ Próximas Etapas
 
-- [ ] Implementar autenticação com JWT  
-- [ ] Criar CRUD de barbeiros e serviços  
-- [ ] Desenvolver sistema de agendamento básico  
-- [ ] Configurar ambiente Docker  
-- [ ] Adicionar testes automatizados
+- [x] Autenticação JWT
+- [x] CRUD de barbeiros, serviços, clientes e agendamentos
+- [ ] Configuração Docker
+- [ ] Testes automatizados
+- [ ] Endpoint de estatísticas/dashboard
+
 
 ---
 

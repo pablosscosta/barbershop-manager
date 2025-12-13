@@ -8,7 +8,7 @@ Sistema de gerenciamento para barbearias — agendamentos, controle de barbeiros
 
 O **Barbershop Manager** é uma aplicação full-stack criada com dois objetivos principais:
 
-1. **Prático**: oferecer funcionalidades de gerenciamento para barbearias, como agendamento online, controle de barbeiros e gestão de serviços.  
+1. **Prático**: oferecer gerenciamento interno de barbearias. Permite ao administrador cadastrar barbeiros, serviços, clientes e controlar agendamentos, com autenticação JWT para proteger as rotas.  
 2. **Educacional**: servir como exercício de construção de um projeto do zero, aplicando boas práticas de engenharia de software em todas as etapas — desde a organização de branches e commits até a documentação e testes automatizados.
 
 Problema: barbearias têm dificuldade em organizar agendamentos e controlar serviços.  
@@ -40,10 +40,11 @@ Cenário: aplicação desenvolvida de forma incremental, seguindo GitHub Flow e 
 - [x] Autenticação JWT:
   - `POST /api/token/` → login (gera access e refresh token)
   - `POST /api/token/refresh/` → gera novo access token
-- [x] Endpoint protegido de teste (`GET /api/dashboard/`) → acessível apenas com token válido
-- [x] Registro de usuários via API:
-  - `POST /api/register/` → cria um novo usuário (campos: `username` e `password`)
-
+- [x] Registro de usuários via API (`POST /api/register/`)
+- [x] CRUD protegido de barbeiros (`/api/barbers/`)
+- [x] CRUD protegido de serviços (`/api/services/`)
+- [x] CRUD protegido de clientes (`/api/customers/`)
+- [x] CRUD protegido de agendamentos (`/api/appointments/`)
 
 
 ---
@@ -72,49 +73,17 @@ python manage.py runserver
 
 ```
 
----
-
-
-## 🔑 Fluxo de Teste da Autenticação
-
-1. **Registrar usuário**
-   - Faça uma requisição `POST` para `/api/register/` com os campos `username` e `password`.
-   - Exemplo de body JSON:
-     ```json
-     {
-       "username": "novo_user",
-       "password": "senha123"
-     }
-     ```
-   - Resposta esperada:
-     ```json
-     {"message": "Usuário registrado com sucesso!"}
-     ```
-
-2. **Obter tokens**
-   - Faça uma requisição `POST` para `/api/token/` com `username` e `password`.
-   - Você receberá um par de tokens: `access` e `refresh`.
-
-3. **Usar rota protegida**
-   - Faça uma requisição `GET` para `/api/dashboard/` sem token → resposta `401 Unauthorized`.
-   - Faça a mesma requisição com o header `Authorization: Bearer <access_token>` → acesso autorizado.
-
-4. **Renovar token**
-   - Quando o `access token` expirar, envie o `refresh token` para `/api/token/refresh/`.
-   - Você receberá um novo `access token`.
 
 ---
 
 ## ⏭️ Próximas Etapas
 
-- [x] Configuração inicial do JWT (checkpoint 1)
-- [x] Endpoints de login e refresh (checkpoint 2)
-- [x] Registro de usuários via API (checkpoint 3)
-- [ ] Proteção de rotas reais (checkpoint 4)
-- [ ] Testes automatizados de autenticação (checkpoint 5)
-- [ ] Criar CRUD de barbeiros e serviços
-- [ ] Desenvolver sistema de agendamento básico
-- [ ] Configurar ambiente Docker
+- [x] Autenticação JWT
+- [x] CRUD de barbeiros, serviços, clientes e agendamentos
+- [ ] Configuração Docker
+- [ ] Testes automatizados
+- [ ] Endpoint de estatísticas/dashboard
+
 
 ---
 

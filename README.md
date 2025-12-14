@@ -32,6 +32,14 @@ Cenário: aplicação desenvolvida de forma incremental, seguindo GitHub Flow e 
 - Django REST Framework 3.16.1
 - PostgreSQL (via psycopg2-binary)
 
+### Infraestrutura
+- Docker
+- Docker Compose
+- Docker Desktop (necessário para rodar em Windows/Mac)
+
+### Autenticação & Segurança
+- JWT (JSON Web Token) para autenticação
+
 ---
 
 ## 🛠️ Funcionalidades
@@ -45,11 +53,51 @@ Cenário: aplicação desenvolvida de forma incremental, seguindo GitHub Flow e 
 - [x] CRUD protegido de serviços (`/api/services/`)
 - [x] CRUD protegido de clientes (`/api/customers/`)
 - [x] CRUD protegido de agendamentos (`/api/appointments/`)
+- [x] Painel administrativo do Django disponível em `/admin/`
+- [x] Ambiente Docker configurado:
+  - Serviço **web** (Django) rodando em `http://localhost:8000`
+  - Serviço **db** (Postgres) rodando em `localhost:5432`
+  - Comandos de gerenciamento via `docker-compose exec web python backend/manage.py <comando>`
+
 
 
 ---
 
 ## 📦 Instalação / Como Executar
+
+### 🔹 Versão 1 — Usando Docker (recomendado)
+
+**Requisitos:**
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado e em execução  
+- Docker Compose (já vem junto com Docker Desktop v2+)  
+
+```
+# Clone o repositório
+git clone https://github.com/pablosscosta/barbershop-manager.git
+
+# Acesse a pasta do projeto
+cd barbershop-manager
+
+# Construa e suba os containers em background
+docker-compose up -d --build
+
+# Aplique as migrações
+docker-compose exec web python backend/manage.py migrate
+
+# Crie um superusuário (opcional, para acessar o painel admin)
+docker-compose exec web python backend/manage.py createsuperuser
+```
+
+- O serviço web (Django) ficará disponível em http://localhost:8000.
+- O serviço db (Postgres) ficará disponível em localhost:5432.
+- O painel administrativo pode ser acessado em http://localhost:8000/admin.
+
+### 🔹 Versão 2 — Execução manual (sem Docker)
+
+**Requisitos:**
+- Python 3.10+
+- Virtualenv (ou venv nativo do Python)
+- Postgres instalado e configurado localmente
 
 ```
 # Clone o repositório
@@ -58,7 +106,8 @@ git clone https://github.com/pablosscosta/barbershop-manager.git
 # Acesse a pasta do backend
 cd barbershop-manager/backend
 
-# Ative o ambiente virtual
+# Crie e ative o ambiente virtual
+python -m venv venv
 source venv/bin/activate   # Linux/Mac
 venv\Scripts\activate      # Windows
 
@@ -68,11 +117,15 @@ pip install -r requirements.txt
 # Realize as migrações
 python manage.py migrate
 
+# Crie um superusuário (opcional)
+python manage.py createsuperuser
+
 # Inicie o servidor
 python manage.py runserver
 
 ```
-
+- O servidor Django ficará disponível em http://localhost:8000.
+- O painel administrativo pode ser acessado em http://localhost:8000/admin.
 
 ---
 
@@ -80,7 +133,7 @@ python manage.py runserver
 
 - [x] Autenticação JWT
 - [x] CRUD de barbeiros, serviços, clientes e agendamentos
-- [ ] Configuração Docker
+- [x] Configuração Docker
 - [ ] Testes automatizados
 - [ ] Endpoint de estatísticas/dashboard
 

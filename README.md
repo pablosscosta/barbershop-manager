@@ -56,16 +56,16 @@ Cenário: aplicação desenvolvida de forma incremental, seguindo GitHub Flow e 
 - [x] Painel administrativo do Django disponível em `/admin/`
 - [x] Ambiente Docker configurado:
   - Serviço **web** (Django) rodando em `http://localhost:8000`
-  - Serviço **db** (Postgres) rodando em `localhost:5432`
-  - Comandos de gerenciamento via `docker-compose exec web python backend/manage.py <comando>`
+  - Serviço **db** (Postgres) rodando em `db:5432`
+  - Serviço **pgAdmin** rodando em `http://localhost:8080`
+    - Login: `admin@admin.com / admin`
+    - Conexão ao banco: Host `db`, Porta `5432`, Database `barbershop`, User `postgres`, Password `postgres`
 
 
 
 ---
 
 ## 📦 Instalação / Como Executar
-
-### 🔹 Versão 1 — Usando Docker (recomendado)
 
 **Requisitos:**
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado e em execução  
@@ -88,44 +88,13 @@ docker-compose exec web python backend/manage.py migrate
 docker-compose exec web python backend/manage.py createsuperuser
 ```
 
-- O serviço web (Django) ficará disponível em http://localhost:8000.
-- O serviço db (Postgres) ficará disponível em localhost:5432.
-- O painel administrativo pode ser acessado em http://localhost:8000/admin.
+- O serviço **web** (Django) ficará disponível em [http://localhost:8000](http://localhost:8000).  
+- O serviço **db** (Postgres) estará acessível internamente como `db:5432` (rede Docker).  
+- O serviço **pgAdmin** ficará disponível em [http://localhost:8080](http://localhost:8080).  
+  - Login padrão: `admin@admin.com / admin`  
+  - Para registrar o servidor: Host `db`, Porta `5432`, Database `barbershop`, User `postgres`, Password `postgres`  
+- O painel administrativo do Django pode ser acessado em [http://localhost:8000/admin](http://localhost:8000/admin).  
 
-### 🔹 Versão 2 — Execução manual (sem Docker)
-
-**Requisitos:**
-- Python 3.10+
-- Virtualenv (ou venv nativo do Python)
-- Postgres instalado e configurado localmente
-
-```
-# Clone o repositório
-git clone https://github.com/pablosscosta/barbershop-manager.git
-
-# Acesse a pasta do backend
-cd barbershop-manager/backend
-
-# Crie e ative o ambiente virtual
-python -m venv venv
-source venv/bin/activate   # Linux/Mac
-venv\Scripts\activate      # Windows
-
-# Instale as dependências
-pip install -r requirements.txt
-
-# Realize as migrações
-python manage.py migrate
-
-# Crie um superusuário (opcional)
-python manage.py createsuperuser
-
-# Inicie o servidor
-python manage.py runserver
-
-```
-- O servidor Django ficará disponível em http://localhost:8000.
-- O painel administrativo pode ser acessado em http://localhost:8000/admin.
 
 ---
 

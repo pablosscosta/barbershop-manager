@@ -79,16 +79,16 @@ git clone https://github.com/pablosscosta/barbershop-manager.git
 cd barbershop-manager
 
 # Construa e suba os containers em background
-docker-compose up -d --build
+docker compose up -d --build
 
 # Aplique as migrações
-docker-compose exec web python backend/manage.py migrate
+docker compose exec web python backend/manage.py migrate
 
 # Crie um superusuário (opcional, para acessar o painel admin)
-docker-compose exec web python backend/manage.py createsuperuser
+docker compose exec web python backend/manage.py createsuperuser
 ```
 
-- O serviço **web** (Django) ficará disponível em [http://localhost:8000](http://localhost:8000).  
+- O serviço **web** (Django) ficará disponível em [http://localhost:8000/api](http://localhost:8000/api).  
 - O serviço **db** (Postgres) estará acessível internamente como `db:5432` (rede Docker).  
 - O serviço **pgAdmin** ficará disponível em [http://localhost:8080](http://localhost:8080).  
   - Login padrão: `admin@admin.com / admin`  

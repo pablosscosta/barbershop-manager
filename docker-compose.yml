@@ -21,7 +21,7 @@ services:
       - .:/app
     environment:
       - DJANGO_SETTINGS_MODULE=backend.core.settings
-      - PYTHONPATH=/app
+      - PYTHONPATH=/app/backend:/app
     depends_on:
       - db
 

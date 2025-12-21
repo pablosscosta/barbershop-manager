@@ -98,6 +98,24 @@ docker compose exec web python backend/manage.py createsuperuser
 
 ---
 
+## 🧪 Como rodar os testes
+
+O projeto possui um serviço dedicado para testes configurado no `docker-compose.yml`.
+
+Para executar o serviço de testes siga os passos abaixo:
+
+
+```
+# Executar os serviços principais
+docker compose up -d
+
+# Use o serviço test para rodar a suíte de testes com pytest
+docker compose run --rm test
+
+```
+
+---
+
 ## ⏭️ Próximas Etapas
 
 - [x] Autenticação JWT

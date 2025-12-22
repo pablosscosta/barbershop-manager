@@ -64,3 +64,12 @@ class AppointmentSerializer(serializers.ModelSerializer):
             "service_id",
             "customer_id",
         ]
+
+    def validate(self, data):
+        barber = data.get("barber")
+        if barber and not barber.is_active:
+            raise serializers.ValidationError({
+                "barber_id": "Cannot create appointment with inactive barber"
+            })
+        return data
+

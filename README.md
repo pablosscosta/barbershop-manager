@@ -60,7 +60,7 @@ Cenário: aplicação desenvolvida de forma incremental, seguindo GitHub Flow e 
   - Serviço **pgAdmin** rodando em `http://localhost:8080`
     - Login: `admin@admin.com / admin`
     - Conexão ao banco: Host `db`, Porta `5432`, Database `barbershop`, User `postgres`, Password `postgres`
-
+- [x] Suites de testes para models, API e integração implementados. 
 
 
 ---
@@ -121,7 +121,7 @@ docker compose run --rm test
 - [x] Autenticação JWT
 - [x] CRUD de barbeiros, serviços, clientes e agendamentos
 - [x] Configuração Docker
-- [ ] Testes automatizados
+- [x] Testes automatizados
 - [ ] Endpoint de estatísticas/dashboard
 
 

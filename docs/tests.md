@@ -1,9 +1,9 @@
 # Testes
 ## Estrutura da suite de testes
 Os testes desse projeto estão divididos em:
-- [testes para os models](../../backend/api/tests/test_models.py)
-- [testes para API](../../backend/api/tests/test_api.py)
-- [testes para integração](../../backend/api/tests/test_integration.py)
+- [testes para os models](../backend/api/tests/test_models.py)
+- [testes para API](../backend/api/tests/test_api.py)
+- [testes para integração](../backend/api/tests/test_integration.py)
 
 
 

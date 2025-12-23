@@ -1,9 +1,10 @@
 # Testes
 ## Estrutura da suite de testes
 Os testes desse projeto estão divididos em:
-- [testes para os models;](https://github.com/pablosscosta/barbershop-manager/blob/main/backend/api/tests/test_models.py)
-- [testes para API;](https://github.com/pablosscosta/barbershop-manager/blob/main/backend/api/tests/test_api.py)
-- [testes para integração;](https://github.com/pablosscosta/barbershop-manager/blob/main/backend/api/tests/test_integration.py)
+- [testes para os models](../../backend/api/tests/test_models.py)
+- [testes para API](../../backend/api/tests/test_api.py)
+- [testes para integração](../../backend/api/tests/test_integration.py)
+
 
 
 ## Executar todos os testes

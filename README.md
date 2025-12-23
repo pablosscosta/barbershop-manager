@@ -95,7 +95,7 @@ Este projeto está licenciado sob os termos da licença MIT. Veja o arquivo [LIC
 
 ## Autor
 
-Desenvolvido por Pablo Silva Costa  
+Desenvolvido por Pablo Costa  
 
 [![GitHub](https://img.shields.io/badge/GitHub-pablosscosta-black?logo=github)](https://github.com/pablosscosta)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-pablosilva013-blue?logo=linkedin)](https://linkedin.com/in/pablosilva013)

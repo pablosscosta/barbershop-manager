@@ -2,6 +2,10 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 from .models import Barber, Service, Customer, Appointment
 
+# Serializador do health point
+class HealthCheckSerializer(serializers.Serializer):
+    status = serializers.CharField()
+
 # Serializador User
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
@@ -15,6 +19,11 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.set_password(validated_data["password"])
         user.save()
         return user
+
+class RegisterResponseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ("id", "username", "email")
 
 # Serializador Cliente
 class CustomerSerializer(serializers.ModelSerializer):

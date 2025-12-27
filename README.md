@@ -73,8 +73,28 @@ Para instruções avançadas de execução, consulte [docs/tests.md](docs/tests.
 
 ## Documentação da API
 
-A documentação interativa da API estará disponível em breve em `/api/docs/` (Swagger/OpenAPI).  
-Esse recurso permitirá explorar os endpoints, parâmetros e respostas diretamente pelo navegador.
+A documentação interativa da API está disponível em `/api/docs/` (Swagger/OpenAPI).
+Esse recurso permite:
+- Explorar todos os endpoints disponíveis (Autenticação, HealthCheck, Clientes, Barbeiros, Serviços, Agendamentos).
+- Visualizar parâmetros de requisição e exemplos de resposta.
+- Testar chamadas diretamente pelo navegador.
+
+### Endpoints principais documentados
+- `POST /api/register/` → Criação de usuário
+- `POST /api/token/` → Obtenção de token JWT (access e refresh)
+- `POST /api/token/refresh/` → Renovação de token JWT
+- `GET /api/health/` → Verificação de status da API
+- CRUD completo para Clientes, Barbeiros, Serviços e Agendamentos
+
+### Como acessar
+1. Suba a aplicação:
+```
+docker compose up --build
+```
+2. Abra no navegador e acesse: http://localhost:8000/api/docs/
+
+
+A especificação OpenAPI também pode ser obtida em /api/schema/ para integração com outras ferramentas.
 
 
 ---

@@ -7,3 +7,4 @@
 - CRUD de agendamentos
 - Painel administrativo (Django Admin)
 - Health-check da API
+- API documentada via Swagger

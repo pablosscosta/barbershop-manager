@@ -51,7 +51,7 @@ services:
 
   db:
     image: postgres:15
-    container_name: database
+    container_name: db
     environment:
       POSTGRES_DB: barbershop
       POSTGRES_USER: postgres

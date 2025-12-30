@@ -48,10 +48,10 @@ git clone https://github.com/pablosscosta/barbershop-manager.git cd barbershop-m
 docker compose up -d --build
 
 # Aplique as migrações
-docker compose exec web python backend/manage.py migrate
+docker compose exec web python manage.py migrate
 
 # Crie um superusuário (opcional)
-docker compose exec web python backend/manage.py createsuperuser
+docker compose exec web python manage.py createsuperuser
 ```
 
 - API disponível em: http://localhost:8000/api

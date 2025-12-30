@@ -27,10 +27,12 @@ A lista completa de funcionalidades implementadas pode ser consultada em [docs/f
 
 ## Tecnologias Utilizadas
 
+- **Frontend**: React + Vite  
 - **Backend**: Python, Django, Django REST Framework  
 - **Banco de Dados**: PostgreSQL  
 - **Infraestrutura**: Docker, Docker Compose  
-- **Autenticação**: JWT (JSON Web Token)
+- **Autenticação**: JWT (JSON Web Token)  
+
 
 Para detalhes de configuração e infraestrutura, veja [docs/infra.md](docs/infra.md).
 
@@ -54,9 +56,11 @@ docker compose exec web python manage.py migrate
 docker compose exec web python manage.py createsuperuser
 ```
 
+# Endpoints e Interfaces
 - API disponível em: http://localhost:8000/api
-
 - Painel administrativo: http://localhost:8000/admin
+- Frontend (dev): http://localhost:5173
+- Frontend (prod): http://localhost:3000
 
 ---
 

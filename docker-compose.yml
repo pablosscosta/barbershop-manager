@@ -1,7 +1,31 @@
 services:
-  web:
+
+  frontend-dev:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: frontend_dev
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    environment:
+      - NODE_ENV=development
+
+  frontend-prod:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend_prod
+    ports:
+      - "3000:80"
+    environment:
+      - NODE_ENV=production
+
+  backend:
     build: ./backend
-    container_name: barbershop_web
+    container_name: backend
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./backend:/app
@@ -15,7 +39,7 @@ services:
 
   test:
     build: ./backend
-    container_name: barbershop_test
+    container_name: test
     command: ["pytest", "-q"]
     volumes:
       - ./backend:/app
@@ -27,7 +51,7 @@ services:
 
   db:
     image: postgres:15
-    container_name: barbershop_db
+    container_name: db
     environment:
       POSTGRES_DB: barbershop
       POSTGRES_USER: postgres

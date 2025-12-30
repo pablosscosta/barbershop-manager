@@ -13,6 +13,15 @@ services:
     environment:
       - NODE_ENV=development
 
+  frontend-prod:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend_prod
+    ports:
+      - "3000:80"
+    environment:
+      - NODE_ENV=production
 
   backend:
     build: ./backend

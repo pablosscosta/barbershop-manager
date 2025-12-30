@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'api.apps.ApiConfig',
     'drf_spectacular',
+    'core',
 ]
 
 REST_FRAMEWORK = {

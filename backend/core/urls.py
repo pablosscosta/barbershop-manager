@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
+from core.views import home
 from api.views import (
     DocsTokenObtainPairView,
     DocsTokenRefreshView,
@@ -7,6 +8,7 @@ from api.views import (
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 urlpatterns = [
+    path('', home, name='home'),
     path('admin/', admin.site.urls),
     path("api/", include("api.urls")),
     path('api/token/', DocsTokenObtainPairView.as_view(), name='token_obtain_pair'),

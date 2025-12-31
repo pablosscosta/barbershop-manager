@@ -11,6 +11,7 @@ function Login() {
     e.preventDefault();
     login(username, password).then(res => {
       localStorage.setItem("token", res.data.access);
+      localStorage.setItem("refresh", res.data.refresh);
       navigate("/dashboard");
     });
 

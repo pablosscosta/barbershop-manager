@@ -1,7 +1,21 @@
-const apiUrl = import.meta.env.VITE_API_URL;
+import axios from "axios";
 
-export async function getBarbers() {
-  const response = await fetch(`${apiUrl}/barbers`);
-  if (!response.ok) throw new Error("Erro ao buscar barbeiros");
-  return response.json();
-}
+const api = axios.create({
+  baseURL: "http://localhost:8000/api",
+});
+
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+export const register = (username, password) => 
+  api.post("/register/", { username, password });
+
+export const login = (username, password) =>
+  api.post("/token/", { username, password });
+
+export default api;

@@ -7,11 +7,11 @@
 - **frontend-prod**: React build servido por Nginx, disponível em http://localhost:3000
 
 ## Banco de Dados
+- Host interno: db
+- Porta: 5432
 - Nome: barbershop
 - Usuário: postgres
 - Senha: postgres
-- Host interno: db
-- Porta: 5432
 
 ## Painel Administrativo
 - Django Admin disponível em http://localhost:8000/admin

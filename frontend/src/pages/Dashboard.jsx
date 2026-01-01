@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -16,7 +17,14 @@ function Dashboard() {
       </header>
 
       <main style={{ marginTop: "16px" }}>
-        <p>Conteúdo da sua dashboard...</p>
+        <nav style={{ marginTop: "16px" }}>
+          <ul style={{ listStyle: "none", padding: 0 }}>
+            <li><Link to="/clients">Clientes</Link></li>
+            <li><Link to="/barbers">Barbeiros</Link></li>
+            <li><Link to="/services">Serviços</Link></li>
+            <li><Link to="/appointments">Agendamentos</Link></li>
+          </ul>
+        </nav>
       </main>
     </div>
   );

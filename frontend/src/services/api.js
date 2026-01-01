@@ -65,4 +65,11 @@ export const updateBarber = (id, data) => api.put(`/barbers/${id}/`, data);
 export const deleteBarber = (id) => api.delete(`/barbers/${id}/`);
 
 
+// === Serviços (CRUD) ===
+export const createService = (data) => api.post("/services/", data);
+export const getServices = () => api.get("/services/");
+export const getService = (id) => api.get(`/services/${id}/`);
+export const updateService = (id, data) => api.put(`/services/${id}/`, data);
+export const deleteService = (id) => api.delete(`/services/${id}/`);
+
 export default api;

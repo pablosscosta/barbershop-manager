@@ -33,7 +33,6 @@ function ClientList({ clients, setClients }) {
 
   return (
     <div>
-      <h3>Lista de Clientes</h3>
       {clients.length === 0 ? (
         <p>Nenhum cliente cadastrado.</p>
       ) : (

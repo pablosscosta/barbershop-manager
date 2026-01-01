@@ -33,7 +33,6 @@ function BarberList({ barbers, setBarbers }) {
 
   return (
     <div>
-      <h3>Lista de Barbeiros</h3>
       {barbers.length === 0 ? (
         <p>Nenhum barbeiro cadastrado.</p>
       ) : (

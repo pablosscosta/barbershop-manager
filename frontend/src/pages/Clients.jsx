@@ -30,7 +30,7 @@ function Clients() {
       <h1>Clientes</h1>
       <h2>Cadastro de Cliente</h2>
       <ClientForm onClientCreated={handleClientCreated} />
-      <h2>Lista de Cliente</h2>
+      <h2>Lista de Clientes</h2>
       <ClientList clients={clients} setClients={setClients} />
     </div>
   );

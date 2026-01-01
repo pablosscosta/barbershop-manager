@@ -56,4 +56,13 @@ export const getClient = (id) => api.get(`/customers/${id}/`);
 export const updateClient = (id, data) => api.put(`/customers/${id}/`, data);
 export const deleteClient = (id) => api.delete(`/customers/${id}/`);
 
+
+// === Barbeiros (CRUD) ===
+export const createBarber = (data) => api.post("/barbers/", data);
+export const getBarbers = () => api.get("/barbers/");
+export const getBarber = (id) => api.get(`/barbers/${id}/`);
+export const updateBarber = (id, data) => api.put(`/barbers/${id}/`, data);
+export const deleteBarber = (id) => api.delete(`/barbers/${id}/`);
+
+
 export default api;

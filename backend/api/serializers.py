@@ -82,3 +82,14 @@ class AppointmentSerializer(serializers.ModelSerializer):
             })
         return data
 
+    def create(self, validated_data):
+        service = validated_data.get("service")
+        if service:
+            validated_data["price"] = service.price
+        return super().create(validated_data)
+
+    def update(self, instance, validated_data):
+        service = validated_data.get("service", instance.service)
+        if service:
+            validated_data["price"] = service.price
+        return super().update(instance, validated_data)

@@ -72,4 +72,11 @@ export const getService = (id) => api.get(`/services/${id}/`);
 export const updateService = (id, data) => api.put(`/services/${id}/`, data);
 export const deleteService = (id) => api.delete(`/services/${id}/`);
 
+// === Agendamentos (CRUD) ===
+export const createAppointment = (data) => api.post("/appointments/", data);
+export const getAppointments = () => api.get("/appointments/");
+export const getAppointment = (id) => api.get(`/appointments/${id}/`);
+export const updateAppointment = (id, data) => api.put(`/appointments/${id}/`, data);
+export const deleteAppointment = (id) => api.delete(`/appointments/${id}/`);
+
 export default api;

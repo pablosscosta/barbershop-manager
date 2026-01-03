@@ -2,12 +2,17 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Box, Typography, Button, Paper, Stack, Dialog, DialogTitle, DialogContent } from "@mui/material";
 import LoginForm from "../components/LoginForm";
+import RegisterForm from "../components/RegisterForm";
 
 
 function Home() {
   const [openLogin, setOpenLogin] = useState(false); 
   const handleOpenLogin = () => setOpenLogin(true); 
   const handleCloseLogin = () => setOpenLogin(false);
+
+  const [openRegister, setOpenRegister] = useState(false); 
+  const handleOpenRegister = () => setOpenRegister(true); 
+  const handleCloseRegister = () => setOpenRegister(false);
 
   return (
     <Box sx={{ display: "flex", width: "100vw", height: "100vh" }}>
@@ -59,7 +64,12 @@ function Home() {
               Login
             </Button>
 
-            <Button component={Link} to="/register" variant="outlined" color="secondary" sx={{ borderRadius: 2, px: 4, py: 1.5 }}>
+            <Button 
+              onClick={handleOpenRegister} 
+              variant="contained" 
+              color="secondary" 
+              sx={{ borderRadius: 2, px: 4, py: 1.5 }}
+            >
               Cadastro
             </Button>
           </Stack>
@@ -88,6 +98,7 @@ function Home() {
         </Box>
       </Box>
 
+      {/* Modal Login */}
       <Dialog
         open={openLogin} 
         onClose={handleCloseLogin} 
@@ -112,6 +123,33 @@ function Home() {
           <LoginForm onSuccess={handleCloseLogin} />
         </DialogContent>
       </Dialog>
+
+      {/* Modal Register */}
+      <Dialog
+        open={openRegister} 
+        onClose={handleCloseRegister} 
+        fullWidth 
+        maxWidth="sm"
+        TransitionProps={{ timeout: 300 }}
+        PaperProps={{
+          sx: {
+            borderRadius: 3,
+            bgcolor: "grey.900",
+            color: "grey.100",
+            boxShadow: 12,
+            p: 3,
+          }
+        }}
+
+      >
+        <DialogTitle sx={{ fontWeight: "bold", textAlign: "center", color: "white" }}>
+          Cadastro
+        </DialogTitle>
+        <DialogContent sx={{ p: 4 }}>
+          <RegisterForm onSuccess={handleCloseRegister} />
+        </DialogContent>
+      </Dialog>
+
     </Box>
   );
 }

@@ -4,14 +4,14 @@ const theme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#004D61", // azul petróleo
+      main: "#004D61", 
     },
     secondary: {
-      main: "#C9A227", // dourado
+      main: "#C9A227", 
     },
     background: {
-      default: "#121212", // fundo principal
-      paper: "#1E1E1E",   // cards, boxes
+      default: "#121212", 
+      paper: "#1E1E1E",   
     },
     text: {
       primary: "#E0E0E0",

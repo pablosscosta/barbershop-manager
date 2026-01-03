@@ -1,7 +1,14 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Box, Typography, Button, Paper, Stack } from "@mui/material";
+import { Box, Typography, Button, Paper, Stack, Dialog, DialogTitle, DialogContent } from "@mui/material";
+import LoginForm from "../components/LoginForm";
+
 
 function Home() {
+  const [openLogin, setOpenLogin] = useState(false); 
+  const handleOpenLogin = () => setOpenLogin(true); 
+  const handleCloseLogin = () => setOpenLogin(false);
+
   return (
     <Box sx={{ display: "flex", width: "100vw", height: "100vh" }}>
       {/* Metade esquerda fixa - imagem */}
@@ -43,9 +50,15 @@ function Home() {
           </Typography>
 
           <Stack direction={{ xs: "column", sm: "row" }} spacing={3} sx={{ mt: 4, justifyContent: "center" }}>
-            <Button component={Link} to="/login" variant="contained" color="primary" sx={{ borderRadius: 2, px: 4, py: 1.5 }}>
+            <Button 
+              onClick={handleOpenLogin} 
+              variant="contained" 
+              color="primary" 
+              sx={{ borderRadius: 2, px: 4, py: 1.5 }}
+            >
               Login
             </Button>
+
             <Button component={Link} to="/register" variant="outlined" color="secondary" sx={{ borderRadius: 2, px: 4, py: 1.5 }}>
               Cadastro
             </Button>
@@ -74,6 +87,31 @@ function Home() {
           </Paper>
         </Box>
       </Box>
+
+      <Dialog
+        open={openLogin} 
+        onClose={handleCloseLogin} 
+        fullWidth 
+        maxWidth="sm"
+        TransitionProps={{ timeout: 300 }}
+        PaperProps={{
+          sx: {
+            borderRadius: 3,
+            bgcolor: "grey.900",
+            color: "grey.100",
+            boxShadow: 12,
+            p: 3,
+          }
+        }}
+
+      >
+        <DialogTitle sx={{ fontWeight: "bold", textAlign: "center", color: "white" }}>
+          Entrar
+        </DialogTitle>
+        <DialogContent sx={{ p: 4 }}>
+          <LoginForm onSuccess={handleCloseLogin} />
+        </DialogContent>
+      </Dialog>
     </Box>
   );
 }

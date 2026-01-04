@@ -79,4 +79,7 @@ export const getAppointment = (id) => api.get(`/appointments/${id}/`);
 export const updateAppointment = (id, data) => api.put(`/appointments/${id}/`, data);
 export const deleteAppointment = (id) => api.delete(`/appointments/${id}/`);
 
+// === Dados da Dashboard ===
+export const getDashboardSummary = () => api.get("/dashboard/summary");
+
 export default api;

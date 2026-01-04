@@ -15,6 +15,7 @@ from .serializers import (
 from .models import Customer, Barber, Service, Appointment
 from drf_spectacular.utils import extend_schema, extend_schema_view, extend_schema_field, OpenApiResponse
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from django.utils.timezone import now
 
 
 class HealthCheckView(APIView):
@@ -203,3 +204,70 @@ class DocsTokenObtainPairView(TokenObtainPairView):
 )
 class DocsTokenRefreshView(TokenRefreshView):
     pass
+
+
+#Documentação da API Dashboard
+@extend_schema(tags=["Dashboard"])
+@extend_schema_view(
+    get=extend_schema(
+        description="Retorna resumo geral da barbearia (clientes, barbeiros ativos, serviços, agendamentos futuros e agenda do dia).",
+        responses={
+            200: {
+                "type": "object",
+                "properties": {
+                    "customers": {"type": "integer", "example": 120},
+                    "barbers": {"type": "integer", "example": 8},
+                    "services": {"type": "integer", "example": 15},
+                    "appointments": {"type": "integer", "example": 32},
+                    "agenda_today": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "customer": {"type": "string", "example": "João"},
+                                "service": {"type": "string", "example": "Corte Masculino"},
+                                "barber": {"type": "string", "example": "Carlos"},
+                                "time": {"type": "string", "example": "14:00"},
+                                "status": {"type": "string", "example": "Agendado"},
+                            },
+                        },
+                    },
+                },
+            }
+        },
+    )
+)
+
+# View do Dashboard
+class DashboardSummaryView(APIView):
+    def get(self, request):
+        # Contagens principais
+        customers_count = Customer.objects.count()
+        barbers_count = Barber.objects.filter(is_active=True).count()
+        services_count = Service.objects.count()
+        appointments_count = Appointment.objects.filter(scheduled_time__gt=now()).count()
+
+        # Agenda do dia
+        today = now().date()
+        agenda_today = Appointment.objects.filter(scheduled_time__date=today)
+
+        agenda_list = [
+            {
+                "customer": a.customer.name,
+                "service": a.service.name,
+                "barber": a.barber.name,
+                "time": a.date.strftime("%H:%M"),
+                "status": a.status,
+            }
+            for a in agenda_today
+        ]
+
+        return Response({
+            "customers": customers_count,
+            "barbers": barbers_count,
+            "services": services_count,
+            "appointments": appointments_count,
+            "agenda_today": agenda_list
+        })
+
+

@@ -68,13 +68,11 @@ function ClientsPage() {
   };
 
   const handleDelete = (id) => {
-    if (window.confirm("Tem certeza que deseja excluir este cliente?")) {
-      api.delete(`/customers/${id}/`)
-        .then(() => {
-          setClients(clients.filter(c => c.id !== id));
-        })
-        .catch(err => console.error("Erro ao deletar cliente", err));
-    }
+    api.delete(`/customers/${id}/`)
+      .then(() => {
+        setClients(clients.filter(c => c.id !== id));
+      })
+      .catch(err => console.error("Erro ao deletar cliente", err));
   };
 
   const handleAskDelete = (client) => {

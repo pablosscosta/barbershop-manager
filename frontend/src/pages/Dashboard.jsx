@@ -1,32 +1,110 @@
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { 
+  Box, Grid, Card, CardContent, Typography, 
+  List, ListItem, ListItemText, Stack, Button 
+} from "@mui/material";
 
 function Dashboard() {
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
-  };
+  const totalClientes = 120;
+  const barbeirosAtivos = 8;
+  const servicosCadastrados = 15;
+  const agendamentosFuturos = 32;
 
   return (
-    <div style={{ padding: "24px" }}>
-      <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <h2>Dashboard</h2>
-        <button onClick={handleLogout}>Sair</button>
-      </header>
+    <Box sx={{ p: 3 }}>
+      {/* Cards de resumo */}
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={6} md={3}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6">Clientes</Typography>
+              <Typography variant="h4">{totalClientes}</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6">Barbeiros ativos</Typography>
+              <Typography variant="h4">{barbeirosAtivos}</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6">Serviços</Typography>
+              <Typography variant="h4">{servicosCadastrados}</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6">Agendamentos futuros</Typography>
+              <Typography variant="h4">{agendamentosFuturos}</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
 
-      <main style={{ marginTop: "16px" }}>
-        <nav style={{ marginTop: "16px" }}>
-          <ul style={{ listStyle: "none", padding: 0 }}>
-            <li><Link to="/clients">Clientes</Link></li>
-            <li><Link to="/barbers">Barbeiros</Link></li>
-            <li><Link to="/services">Serviços</Link></li>
-            <li><Link to="/appointments">Agendamentos</Link></li>
-          </ul>
-        </nav>
-      </main>
-    </div>
+      {/* Agenda do dia */}
+      <Card sx={{ mt: 4 }}>
+        <CardContent>
+          <Typography variant="h6" gutterBottom>Agenda do dia</Typography>
+          <List>
+            <ListItem>
+              <ListItemText 
+                primary="João - Corte Masculino" 
+                secondary="Barbeiro: Carlos | 14:00 | Agendado" 
+              />
+            </ListItem>
+            <ListItem>
+              <ListItemText 
+                primary="Maria - Barba completa" 
+                secondary="Barbeiro: Pedro | 15:30 | Concluído" 
+              />
+            </ListItem>
+            <ListItem>
+              <ListItemText 
+                primary="Lucas - Corte + Barba" 
+                secondary="Barbeiro: Rafael | 16:00 | Cancelado" 
+              />
+            </ListItem>
+          </List>
+        </CardContent>
+      </Card>
+
+      {/* Atalhos rápidos */}
+      <Stack direction="row" spacing={2} sx={{ mt: 4 }}>
+        <Button variant="contained" color="primary">Novo agendamento</Button>
+        <Button variant="outlined" color="secondary">Cadastrar cliente</Button>
+        <Button variant="outlined" color="secondary">Adicionar serviço</Button>
+      </Stack>
+
+      {/* Espaço para gráficos */}
+      <Grid container spacing={3} sx={{ mt: 4 }}>
+        <Grid item xs={12} md={6}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6">Serviços mais usados</Typography>
+              <Typography variant="body2" color="text.secondary">
+                (Gráfico aqui futuramente)
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6">Status dos agendamentos</Typography>
+              <Typography variant="body2" color="text.secondary">
+                (Gráfico aqui futuramente)
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </Box>
   );
 }
 

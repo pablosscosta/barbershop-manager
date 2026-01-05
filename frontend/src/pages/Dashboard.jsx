@@ -125,7 +125,7 @@ function Dashboard() {
                 <ListItem key={idx}>
                   <ListItemText 
                     primary={`${item.customer} - ${item.service}`} 
-                    secondary={`Barbeiro: ${item.barber} | ${item.time} | ${item.status}`} 
+                    secondary={`Barbeiro: ${item.barber} | ${item.time} | ${statusMap[item.status]}`} 
                   />
                 </ListItem>
               ))}

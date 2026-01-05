@@ -256,7 +256,7 @@ class DashboardSummaryView(APIView):
                 "customer": a.customer.name,
                 "service": a.service.name,
                 "barber": a.barber.name,
-                "time": a.date.strftime("%H:%M"),
+                "time": a.scheduled_time.strftime("%H:%M"),
                 "status": a.status,
             }
             for a in agenda_today
